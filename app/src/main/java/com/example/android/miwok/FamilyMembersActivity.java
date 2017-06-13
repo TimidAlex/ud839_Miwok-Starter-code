@@ -55,7 +55,10 @@ public class FamilyMembersActivity extends AppCompatActivity {
                 mediaPlayer.setOnCompletionListener(mComplListener);
 
             }
-        });}
+        });
+
+
+    }
     @Override
     protected void onStop() {
         super.onStop();
