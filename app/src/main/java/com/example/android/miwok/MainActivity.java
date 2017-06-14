@@ -15,82 +15,28 @@
  */
 package com.example.android.miwok;
 
-import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.TabLayout;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
-import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
 
-        // Set the content of the activity to use the activity_main.xml layout file
-        setContentView(R.layout.activity_main);
+        protected void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.activity_main);
 
-      // обработчик нажатия для Numbers
-        TextView numbers = (TextView)findViewById(R.id.numbers);
-        numbers.setOnClickListener(new View.OnClickListener() {
-        @Override
-            public void onClick (View v) {
+            // Get the ViewPager and set it's PagerAdapter so that it can display items
+            ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
+            viewPager.setAdapter(new SampleFragmentPagerAdapter(getSupportFragmentManager(),
+                    MainActivity.this));
 
-            Intent numbersIntent = new Intent (MainActivity.this,NumbersActivity.class);
-            startActivity(numbersIntent);
-
+            // Give the TabLayout the ViewPager
+            TabLayout tabLayout = (TabLayout) findViewById(R.id.sliding_tabs);
+            tabLayout.setupWithViewPager(viewPager);
         }
-        });
-        // обработчик нажатия для FamilyMembers
-       TextView openFamily = (TextView) findViewById(R.id.family);
-        openFamily.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent familyIntent = new Intent(MainActivity.this, FamilyMembersActivity.class);
-                startActivity(familyIntent);
-            }
-        });
 
-        // обработчик нажатия для Colors
-        TextView colors = (TextView) findViewById(R.id.colors);
-        colors.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent colorsIntent = new Intent(MainActivity.this, ColorsActivity.class);
-                startActivity(colorsIntent);
-            }
-        });
-
-        // обработчик нажатия для Phrases
-        TextView phrases = (TextView) findViewById(R.id.phrases);
-        phrases.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent phrasesIntent = new Intent(MainActivity.this, PhrasesActivity.class);
-                startActivity(phrasesIntent);
-            }
-        });
     }
 
-
-    // Интент для вызова FamilyMembersActivity
-    public void openFamily (View view) {
-
-        Intent intent = new Intent(this, FamilyMembersActivity.class);
-        startActivity(intent);
-    }
-
-    // Интент для вызова Colors
-    public void openColors (View view) {
-
-        Intent intent = new Intent(this, ColorsActivity.class);
-        startActivity(intent);
-    }
-
-    // Интент для вызова Phrases
-    public void openPhrases (View view) {
-
-        Intent intent = new Intent(this, PhrasesActivity.class);
-        startActivity(intent);
-    }
-}

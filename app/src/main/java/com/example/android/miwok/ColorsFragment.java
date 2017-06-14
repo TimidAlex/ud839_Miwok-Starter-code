@@ -16,8 +16,12 @@ import java.util.ArrayList;
 
 public class ColorsFragment extends Fragment {
 
+
+
     MediaPlayer mediaPlayer;
     private AudioManager mAudioManager;
+
+
 
     /**
      * This listener gets triggered whenever the audio focus changes
@@ -57,10 +61,15 @@ public class ColorsFragment extends Fragment {
         }
     };
 
+
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         View rootView = inflater.inflate(R.layout.word_list, container, false);
+
+
 
 
         final ArrayList<Word> words = new ArrayList<Word>();
